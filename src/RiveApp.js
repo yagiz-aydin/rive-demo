@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import './App.css';
 import { Rive } from "@rive-app/canvas";
 import BouncedCharacterAnimation from './assets/animations/bounce.riv';
 
