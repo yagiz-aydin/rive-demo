@@ -1,22 +1,21 @@
-import logo from './logo.svg';
+import React, {useEffect} from 'react';
 import './App.css';
+import { Rive } from "@rive-app/canvas";
+import BouncedCharacterAnimation from './assets/animations/bounce.riv';
 
 function App() {
+  useEffect(() => {
+    new Rive({
+      src: BouncedCharacterAnimation,
+      canvas: document.getElementById("canvas"),
+      autoplay: true
+    });
+  },[]);
+
   return (
-    <div className="App">
+    <div>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <canvas id="canvas"/>
       </header>
     </div>
   );
