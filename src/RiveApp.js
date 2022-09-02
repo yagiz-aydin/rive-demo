@@ -86,7 +86,7 @@ function App() {
       new Rive({
         src: anim,
         canvas: document.getElementById('canvas'),
-        autoplay: true,
+        autoplay: true
       });
   }, [animState, anim]);
 
@@ -112,18 +112,20 @@ function App() {
   }, [animState, animQueue]);
 
   useEffect(() => {
-    if (animQueue.length > 0) setAnim(animQueue[0].src);
+    if (animQueue.length > 0 && animState) setAnim(animQueue[0].src);
     if (animQueue.length === 0) {
       setAnimState();
       setAnim();
     }
   }, [animQueue]);
 
+  console.log(animQueue)
+
   return (
     <div>
       <header>
-        {animState && <canvas id='canvas' />}
-        <h1>Playground</h1>
+        {animState && <canvas id='canvas' width={500} height={500}/>}
+        <h1>Playground v2</h1>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           {animArray.map((item) => (
             <div key={item.name}>
@@ -136,9 +138,9 @@ function App() {
         </div>
         <h1>Queue</h1>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
-          {animQueue.map((anim) => (
+          {animQueue.map((anim, key) => (
             <div
-              key={anim.name}
+              key={key}
               style={{
                 border: '1px solid black',
                 margin: '5px',
